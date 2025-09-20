@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rdel-agu <rdel-agu@student.42.fr>          +#+  +:+       +#+         #
+#    By: qvy <qvy@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/20 12:48:07 by rdel-agu          #+#    #+#              #
-#    Updated: 2025/09/20 12:48:43 by rdel-agu         ###   ########.fr        #
+#    Updated: 2025/09/20 22:06:00 by qvy              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ RM = rm
 OBJ = $(SRC:.c=.o)
 
 SRC =	srcs/main.c \
-		srcs/str_utils.c
+		srcs/str_utils.c \
+		srcs/list_utils.c
 		
 INCL =	includes/ft_ls.h
 
