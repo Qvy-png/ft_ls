@@ -25,6 +25,7 @@ int	main(int argc, char **argv){
 	int len;
 
 	head = NULL;
+	full_name = NULL;
 	if (argc == 1)
 		arg_path = ft_strdup(".");
 	else
@@ -42,6 +43,8 @@ int	main(int argc, char **argv){
 
 		len = ft_strlen(arg_path) + ft_strlen(entry->d_name) + 2;
 		full_name = malloc(len);
+		if (full_name == NULL)
+			return (127);
 
 		ft_strlcpy(full_name, arg_path, len);
         ft_strlcat(full_name, "/", len);
@@ -52,6 +55,7 @@ int	main(int argc, char **argv){
 			ft_putstr("Could not lstat element, continuing!");
 			continue;
 		}
+		free(full_name);
 
 		if (S_ISREG(st.st_mode)) {
 			type = 'f';
@@ -74,12 +78,15 @@ int	main(int argc, char **argv){
 	}
 
 	sort_list_alpha(head);
-	print_list_no_dot(head);
+	// print_list_no_dot(head);
+	print_big_r(head);
 
 	close_ret = closedir(dir);
 	if (close_ret == -1)
 		ft_putstr("Closedir failed, exiting!");
 	free(arg_path);
 	free_list(head);
+		// free(full_name);
+
 }
 

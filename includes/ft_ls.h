@@ -45,6 +45,7 @@ int     ft_strncmp_case(const char *s1, const char *s2, size_t n);
 
 // LIST_UTILS
 void    free_list(t_file *head);
+void	print_big_r(t_file *head);
 void    print_raw_list(t_file *head);
 void    sort_list_alpha(t_file *head);
 void    print_list_no_dot(t_file *head);

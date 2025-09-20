@@ -87,5 +87,17 @@ void	print_big_r(t_file *head) {
 	t_file *tmp;
 	
 	tmp = head;
-	while (tmp->)
+	while (tmp != NULL)
+	{
+		if (tmp->name[0] != '.')
+		{
+			ft_putchar('\n');
+			if (tmp->type == 'd' && ft_strncmp(tmp->name, "..", ft_strlen(tmp->name) != 0))
+				ft_putstr("Oh man you're in -> ");
+			ft_putstr(tmp->name);
+			ft_putstr("  ");
+		}
+		tmp = tmp->next;
+	}
+	ft_putchar('\n');
 }
