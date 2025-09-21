@@ -92,7 +92,7 @@ void	print_big_r(t_file *head) {
 		if (tmp->name[0] != '.')
 		{
 			if (tmp->type == 'd' && ft_strncmp(tmp->name, "..", ft_strlen(tmp->name) != 0))
-			ft_putstr("Oh man you're in -> ");
+			ft_putstr("Dir -> ");
 			ft_putstr(tmp->name);
 			ft_putstr("  ");
 			ft_putchar('\n');

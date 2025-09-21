@@ -22,7 +22,8 @@ OBJ = $(SRC:.c=.o)
 
 SRC =	srcs/main.c \
 		srcs/str_utils.c \
-		srcs/list_utils.c
+		srcs/list_utils.c \
+		srcs/flags_utils.c
 		
 INCL =	includes/ft_ls.h
 

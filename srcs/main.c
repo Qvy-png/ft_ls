@@ -14,22 +14,40 @@
 
 int	main(int argc, char **argv){
 
+	int				len;
+	int				flag_ret;
+	int				close_ret;
+	// int				l, R, a, r, t;
+	// int				i;
+
+	char			type;
+	char			*arg_path;
+	char			*full_name;
+	struct stat		st;
+	struct dirent	*entry;
 	DIR				*dir;
 	t_file			*head;
-	struct dirent	*entry;
-	char			*arg_path;
-	int				close_ret;
-	struct stat		st;
-	char			type;
-	char			*full_name;
-	int len;
+	t_flags			*flags;
 
+	flag_ret = 0;
 	head = NULL;
+	flags = NULL;
 	full_name = NULL;
+	// l = R = a = r = t = i = 0;
 	if (argc == 1)
 		arg_path = ft_strdup(".");
-	else
+	else //TODO find and store all paths in a linked list
 		arg_path = ft_strdup(argv[1]);
+
+	flag_ret = flag_checker(argc, argv);
+	if (flag_ret == 1)
+		return (2);
+	else if (flag_ret == 0)
+		flags = flags_extracter(argc, argv);
+	else
+		ft_putstr("That is the normal ls man\n");
+
+	print_flags(flags);	
 	dir = opendir(arg_path);
 	if (dir == NULL)
 	{
@@ -42,11 +60,11 @@ int	main(int argc, char **argv){
 	while (entry != NULL){
 
 		len = ft_strlen(arg_path) + ft_strlen(entry->d_name) + 2;
-		full_name = malloc(len);
+		full_name = malloc(sizeof(char) * len);
 		if (full_name == NULL)
 			return (127);
-
-		ft_strlcpy(full_name, arg_path, len);
+		full_name[0] = '\0';
+		ft_strlcpy(full_name, arg_path, ft_strlen(arg_path) + 1);
         ft_strlcat(full_name, "/", len);
         ft_strlcat(full_name, entry->d_name, len);
 		
@@ -86,7 +104,6 @@ int	main(int argc, char **argv){
 		ft_putstr("Closedir failed, exiting!");
 	free(arg_path);
 	free_list(head);
-		// free(full_name);
-
+	// free(full_name);
 }
 

@@ -27,9 +27,20 @@
 typedef struct s_file {
     char			*name;
     char			type;
-    int				printed;
     struct s_file	*next;
 } t_file;
+
+// STORING PATHS
+typedef struct s_path {
+    char			*name;
+    struct s_path	*next;
+} t_path;
+
+// STORING FLAGS
+typedef struct s_flags {
+    char			*name;
+    struct s_flags	*next;
+} t_flags;
 
 // STR_UTILS
 void    ft_putnbr(int n);
@@ -46,9 +57,15 @@ int     ft_strncmp_case(const char *s1, const char *s2, size_t n);
 // LIST_UTILS
 void    free_list(t_file *head);
 void	print_big_r(t_file *head);
-void    print_raw_list(t_file *head);
+void	print_raw_list(t_file *head);
 void    sort_list_alpha(t_file *head);
 void    print_list_no_dot(t_file *head);
 t_file  *add_file(t_file *head, const char *filename, char type);
+
+// FLAGS_UTILS
+void	print_flags(t_flags *head);
+int     flag_checker(int argc, char **argv);
+t_flags	*flags_extracter(int argc, char **argv);
+
 
 #endif
